@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --color-ink: #0B2E36;
+  --color-lagoon: #12505C;
+  --color-tide: #2D7A86;
+  --color-aqua: #7FD3D0;
+  --color-mist: #DCEAE8;
+  --color-sand: #F5EFE4;
+  --color-shell: #FBF8F2;
+  --color-laterite: #B5532E;
+  --color-test: #FFE14D;
+  --color-cheville: #F2C230;
+  --color-genou: #EE7F2D;
+  --color-taille: #D63A2F;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--color-sand);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Bandeau TEST : hachures jaune/noir, impossible à rater */
+.test-stripes {
+  background-image: repeating-linear-gradient(-45deg, #FFE14D 0 14px, #F7D22B 14px 28px);
+}
+
+/* Marqueurs de carte : une pastille couleur du niveau, qui porte « TEST » pour la démo */
+.ts-pin { background: none; border: 0; }
+.ts-pin .dot {
+  position: absolute; left: 0; top: 0; box-sizing: border-box;
+  width: 22px; height: 22px; border-radius: 999px;
+  background: var(--c);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1.5px rgba(11,46,54,.55), 0 3px 8px rgba(11,46,54,.35);
+}
+.ts-pin .pill {
+  position: absolute; left: 0; top: 0; box-sizing: border-box;
+  width: 40px; height: 22px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--c); color: var(--k);
+  font: 800 9.5px/1 var(--font-sans); letter-spacing: .08em;
+  border: 2.5px solid #fff;
+  box-shadow: 0 0 0 1.5px rgba(11,46,54,.6), 0 3px 8px rgba(11,46,54,.35);
+}
+.ts-pin.pending .pill, .ts-pin.pending .dot {
+  background: #fff; color: #0B2E36;
+  border: 3px dashed var(--c);
+}
+.ts-pin-new .dot { width: 28px; height: 28px; background: var(--color-ink); border-color: var(--color-aqua); }
+
+.leaflet-container { font-family: var(--font-sans); background: #DCE6E3; }
+.leaflet-popup-content-wrapper { border-radius: 18px; padding: 0; overflow: hidden; box-shadow: 0 12px 32px rgba(11,46,54,.28); }
+.leaflet-popup-content { margin: 0; width: 240px !important; }
+.leaflet-popup-tip { box-shadow: none; }
+.leaflet-control-attribution { font-size: 10px; background: rgba(251,248,242,.85) !important; }
+.leaflet-control-zoom a { color: var(--color-ink) !important; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .28s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes rise { from { transform: translateY(16px); opacity: 0 } to { transform: none; opacity: 1 } }
+}
