@@ -1,4 +1,4 @@
-import type { Level } from '../types'
+import type { Level, Report } from '../types'
 import { LEVELS } from '../levels'
 
 /**
@@ -26,4 +26,16 @@ export function demoPhoto(level: Level, seed: number): string {
 <text x="135" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="800" fill="#111">TEST</text>
 </svg>`
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg)
+}
+
+/**
+ * Photo à afficher. Les signalements de démo sans fichier (carte partagée)
+ * reçoivent l'illustration TEST, générée sur l'appareil.
+ */
+export function displayPhoto(r: Pick<Report, 'photo' | 'source' | 'level' | 'id'>): string | undefined {
+  if (r.photo) return r.photo
+  if (r.source !== 'demo') return undefined
+  let seed = 0
+  for (let i = 0; i < r.id.length; i++) seed = (seed + r.id.charCodeAt(i)) % 97
+  return demoPhoto(r.level, seed)
 }

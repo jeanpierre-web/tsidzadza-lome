@@ -22,6 +22,11 @@ jobs:
       - run: npm ci
       - run: npm test --if-present -- --run
       - run: npm run build
+        env:
+          # Vides tant que les secrets ne sont pas créés : l'app reste en localStorage.
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_ALERT_VIDEO_URL: ${{ secrets.VITE_ALERT_VIDEO_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

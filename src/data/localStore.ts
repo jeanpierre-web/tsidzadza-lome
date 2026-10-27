@@ -70,4 +70,8 @@ export class LocalStorageStore implements ReportStore {
   async reset(): Promise<void> {
     this.write(this.seed())
   }
+
+  wasStale(): boolean {
+    return false
+  }
 }

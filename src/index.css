@@ -1,6 +1,50 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
+/* Polices auto-hébergées (latin uniquement) : pas d'appel à Google Fonts. SIL OFL, voir src/fonts/. */
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/instrument-sans-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./fonts/instrument-sans-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/instrument-sans-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./fonts/instrument-sans-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2");
+}
+
 @theme {
   --color-ink: #0B2E36;
   --color-lagoon: #12505C;
@@ -24,8 +68,21 @@ body {
   background: var(--color-sand);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
+}
+button, a, label { touch-action: manipulation; }
+:focus-visible {
+  outline: 3px solid #FFE14D;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #0B2E36;
+}
+[tabindex="-1"]:focus, [tabindex="-1"]:focus-visible { outline: none; box-shadow: none; }
+label:has(:focus-visible) {
+  outline: 3px solid #FFE14D;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #0B2E36;
 }
 
 /* Bandeau TEST : hachures jaune/noir, impossible à rater */
@@ -62,7 +119,14 @@ body {
 .leaflet-popup-content { margin: 0; width: 240px !important; }
 .leaflet-popup-tip { box-shadow: none; }
 .leaflet-control-attribution { font-size: 10px; background: rgba(251,248,242,.85) !important; }
-.leaflet-control-zoom a { color: var(--color-ink) !important; }
+.leaflet-control-zoom a { color: var(--color-ink) !important; width: 40px !important; height: 40px !important; line-height: 40px !important; }
+.leaflet-popup-close-button {
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 22px !important;
+  line-height: 40px !important;
+  padding: 0 !important;
+}
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }

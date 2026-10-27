@@ -36,7 +36,7 @@ async function mobile() {
   // parcours Signaler
   await page.goto(BASE + '#/signaler'); await wait(600)
   await page.screenshot({ path: OUT + 'mobile-05-signaler-photo.png' })
-  await page.locator('input[type=file]').setInputFiles(new URL('./sample-photo.svg', import.meta.url).pathname); await wait(800)
+  await page.locator('input[type=file][data-source="gallery"]').setInputFiles(new URL('./sample-photo.svg', import.meta.url).pathname); await wait(1200)
   await page.screenshot({ path: OUT + 'mobile-05b-signaler-photo-choisie.png' })
   await page.getByRole('button', { name: /Continuer sans photo|Suivant/ }).click(); await wait(400)
   await page.getByRole('button', { name: /Ma position/ }).click(); await tiles(page)
@@ -51,6 +51,15 @@ async function mobile() {
   await page.goto(BASE + '#/moderation'); await wait(600)
   await page.screenshot({ path: OUT + 'mobile-10-moderation.png' })
   await ctx.close()
+
+  const denied = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, locale: 'fr-FR' })
+  const deniedPage = await denied.newPage()
+  await deniedPage.goto(BASE + '#/signaler'); await wait(500)
+  await deniedPage.getByRole('button', { name: /Continuer sans photo|Suivant/ }).click()
+  await deniedPage.getByRole('button', { name: /Ma position/ }).click()
+  await deniedPage.getByRole('alert').waitFor({ timeout: 15000 })
+  await deniedPage.screenshot({ path: OUT + 'mobile-06b-signaler-lieu-refuse.png' })
+  await denied.close()
 }
 
 async function desktop() {
