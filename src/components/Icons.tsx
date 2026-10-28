@@ -52,6 +52,7 @@ export const DropLogo = ({ size = 30 }: P) => (
   </svg>
 )
 export const CameraIcon = ({ className, size }: P) => (<svg {...base(size)} className={className}><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" /><circle cx="12" cy="13.5" r="3.5" /></svg>)
+export const ImageIcon = ({ className, size }: P) => (<svg {...base(size)} className={className}><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="8.5" cy="10" r="1.5" /><path d="M21 15l-4.5-4.5L7 19" /></svg>)
 export const PinIcon = ({ className, size }: P) => (<svg {...base(size)} className={className}><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></svg>)
 export const TargetIcon = ({ className, size }: P) => (<svg {...base(size)} className={className}><circle cx="12" cy="12" r="7" /><circle cx="12" cy="12" r="2" fill="currentColor" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></svg>)
 export const CheckIcon = ({ className, size }: P) => (<svg {...base(size)} className={className} strokeWidth={2.6}><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>)

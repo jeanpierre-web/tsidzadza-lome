@@ -15,6 +15,11 @@ export interface Report {
   /** true = donnée de démonstration, jamais réelle. */
   isTest: boolean
   source: 'demo' | 'web' | 'whatsapp'
+  /**
+   * Encore sur cet appareil : l'envoi vers le stockage partagé reprendra
+   * dès que le réseau revient. Absent pour un signalement déjà enregistré.
+   */
+  pendingSync?: boolean
 }
 
 export type NewReport = Pick<Report, 'lat' | 'lng' | 'level' | 'quartier' | 'photo'>

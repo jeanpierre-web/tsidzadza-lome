@@ -33,7 +33,7 @@ export function QuartierPanel({ reports, selected, onSelect }: Props) {
     <section aria-label="Quartiers pilotes" className="space-y-3">
       <div className="flex items-baseline justify-between">
         <h2 className="font-display text-xl font-bold">Quartiers</h2>
-        <button className={`rounded-full px-3 py-1 text-sm font-semibold ${selected === null ? 'bg-ink text-white' : 'bg-white text-ink ring-1 ring-ink/15'}`} onClick={() => onSelect(null)}>
+        <button type="button" className={`min-h-11 rounded-full px-4 text-sm font-semibold ${selected === null ? 'bg-ink text-white' : 'bg-white text-ink ring-1 ring-ink/15'}`} onClick={() => onSelect(null)}>
           Tous
         </button>
       </div>
@@ -44,6 +44,7 @@ export function QuartierPanel({ reports, selected, onSelect }: Props) {
           return (
             <li key={q.id}>
               <button
+                type="button"
                 onClick={() => onSelect(active ? null : q.id)}
                 aria-pressed={active}
                 className={`w-full rounded-2xl p-3 text-left transition ${active ? 'bg-ink text-white shadow-lg shadow-ink/20' : 'bg-white ring-1 ring-ink/10 hover:ring-ink/30'}`}

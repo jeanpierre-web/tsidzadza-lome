@@ -6,6 +6,7 @@ import { LEVELS } from '../levels'
 import { QUARTIERS, LOME_CENTER, quartierById } from '../quartiers'
 import { formatTime, STATUS_LABEL } from '../format'
 import { reportTag, reportTitle } from '../testLabel'
+import { displayPhoto } from '../data/demoPhoto'
 import { LevelIcon } from './Icons'
 
 const OSM_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -43,10 +44,11 @@ function ClickCatcher({ onPick }: { onPick?: (lat: number, lng: number) => void 
 export function ReportPopup({ r }: { r: Report }) {
   const q = quartierById(r.quartier)
   const meta = LEVELS[r.level]
+  const photo = displayPhoto(r)
   return (
     <article aria-label={reportTitle(r, q?.name)} className="text-ink">
-      {r.photo ? (
-        <img src={r.photo} alt={r.isTest ? 'Illustration de démonstration (TEST), pas une vraie photo' : 'Photo du signalement'} className="block h-[136px] w-full object-cover" />
+      {photo ? (
+        <img src={photo} alt={r.isTest ? 'Illustration de démonstration (TEST), pas une vraie photo' : 'Photo du signalement'} className="block h-[136px] w-full object-cover" />
       ) : (
         <div className="flex h-16 items-center justify-center bg-mist text-xs text-lagoon">Sans photo</div>
       )}
