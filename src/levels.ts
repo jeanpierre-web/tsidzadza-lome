@@ -5,14 +5,16 @@ export interface LevelMeta {
   rank: 1 | 2 | 3
   label: string // court, en français
   ariaLabel: string
+  /** Nom de la couleur dans la légende : vert, orange, rouge. */
+  colorName: string
   color: string
   ink: string // couleur de texte lisible sur `color`
 }
 
 export const LEVELS: Record<Level, LevelMeta> = {
-  cheville: { id: 'cheville', rank: 1, label: 'Cheville', ariaLabel: "Eau jusqu'à la cheville", color: '#F2C230', ink: '#2B2205' },
-  genou: { id: 'genou', rank: 2, label: 'Genou', ariaLabel: "Eau jusqu'au genou", color: '#EE7F2D', ink: '#2B1405' },
-  taille: { id: 'taille', rank: 3, label: 'Taille', ariaLabel: "Eau jusqu'à la taille", color: '#D63A2F', ink: '#FFFFFF' },
+  cheville: { id: 'cheville', rank: 1, label: 'Cheville', ariaLabel: "Eau jusqu'à la cheville", colorName: 'Vert', color: '#2BB85A', ink: '#062112' },
+  genou: { id: 'genou', rank: 2, label: 'Genou', ariaLabel: "Eau jusqu'au genou", colorName: 'Orange', color: '#EE7F2D', ink: '#2B1405' },
+  taille: { id: 'taille', rank: 3, label: 'Taille', ariaLabel: "Eau jusqu'à la taille", colorName: 'Rouge', color: '#D63A2F', ink: '#FFFFFF' },
 }
 
 export const LEVEL_ORDER: Level[] = ['cheville', 'genou', 'taille']

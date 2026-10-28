@@ -6,8 +6,13 @@ import { reportTag, reportTitle, TEST_BANNER } from './testLabel'
 import { QUARTIERS, nearestQuartier } from './quartiers'
 
 describe('niveaux d’eau', () => {
-  it('ordonne cheville < genou < taille avec 3 couleurs distinctes', () => {
+  it('ordonne cheville < genou < taille en vert, orange, rouge', () => {
     expect(LEVEL_ORDER.map((l) => LEVELS[l].rank)).toEqual([1, 2, 3])
+    expect(LEVEL_ORDER.map((l) => LEVELS[l].colorName)).toEqual(['Vert', 'Orange', 'Rouge'])
+    expect(LEVELS.cheville.color).toBe('#2BB85A')
+    expect(LEVELS.cheville.ink).toBe('#062112')
+    expect(LEVELS.genou.color).toBe('#EE7F2D')
+    expect(LEVELS.taille.color).toBe('#D63A2F')
     expect(new Set(LEVEL_ORDER.map((l) => LEVELS[l].color)).size).toBe(3)
   })
   it('reconnaît les saisies libres (futur bot WhatsApp)', () => {

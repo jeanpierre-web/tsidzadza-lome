@@ -62,11 +62,12 @@ function Brand() {
 
 function Legend() {
   return (
-    <div className="flex gap-1.5 rounded-2xl bg-white/95 p-1.5 shadow-md ring-1 ring-ink/10 backdrop-blur" aria-label="Légende des niveaux">
+    <div className="flex gap-1.5 rounded-2xl bg-white/95 p-1.5 shadow-md ring-1 ring-ink/10 backdrop-blur" aria-label="Légende : vert, orange, rouge">
       {LEVEL_ORDER.map((l) => (
-        <div key={l} className="flex flex-col items-center rounded-xl px-1.5 pt-1 pb-0.5" style={{ background: LEVELS[l].color + '30' }}>
+        <div key={l} className="flex flex-col items-center rounded-xl px-1.5 pt-1 pb-0.5" style={{ background: LEVELS[l].color + '30' }} aria-label={`${LEVELS[l].colorName}, ${LEVELS[l].ariaLabel}`}>
           <LevelIcon level={l} size={34} />
-          <span className="text-[10px] font-bold">{LEVELS[l].label}</span>
+          <span className="text-[11px] font-extrabold leading-none">{LEVELS[l].colorName}</span>
+          <span className="text-[9px] font-semibold leading-tight text-ink/70">{LEVELS[l].label}</span>
         </div>
       ))}
       <div className="flex flex-col items-center justify-center px-1 text-[10px] font-semibold text-ink/70">

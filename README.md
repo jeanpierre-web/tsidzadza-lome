@@ -8,7 +8,7 @@ Ce dépôt contient la brique « carte web + formulaire mobile de signalement »
 
 ## Ce que fait le prototype
 - **Carte du Grand Lomé** (Leaflet + tuiles OpenStreetMap, attribution affichée en bas à droite). Les signalements sont des pastilles colorées par niveau d'eau :
-  jaune = cheville, orange = genou, rouge = taille. Une pastille blanche en pointillés = en attente de modération.
+  vert = cheville, orange = genou, rouge = taille. Une pastille blanche en pointillés = en attente de modération.
 - **Fenêtre d'un signalement** : photo (illustration pour la démo), pictogramme, quartier, heure (fuseau Africa/Lome), statut « Validé » ou « En attente de modération », étiquette TEST.
 - **5 quartiers pilotes** (Nyékonakpoè, Bè, Agbalépédogan, Awatamé, Ségbé) : un filtre par quartier avec le nombre de signalements validés par niveau, les signalements en attente et l'historique récent.
 - **Parcours « Signaler »** en 4 écrans, gros boutons, très peu de texte :
